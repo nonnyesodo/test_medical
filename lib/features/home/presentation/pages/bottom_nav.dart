@@ -1,0 +1,59 @@
+import 'package:medical_app/features/home/data/local/home_static_repo.dart';
+import 'package:medical_app/features/home/presentation/pages/home_page.dart';
+import 'package:medical_app/global_widget/export.dart';
+
+class BottomNav extends StatefulWidget {
+  const BottomNav({super.key});
+
+  @override
+  State<BottomNav> createState() => _BottomNavState();
+}
+
+class _BottomNavState extends State<BottomNav> {
+  final screens = [HomePage()];
+  @override
+  Widget build(BuildContext context) {
+    final size = MediaQuery.sizeOf(context);
+    // final watchHome = context.watch<HomeCubit>();
+    return Scaffold(
+      body: screens[0],
+      bottomNavigationBar: Column(
+        mainAxisSize: MainAxisSize.min,
+        children: [
+          AppshadowContainer(
+            radius: 0,
+            color: AppColors.blackOrWhite(context, reverse: true),
+            padding: EdgeInsets.all(size.width * 0.04),
+            child: Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: List.generate(
+                    HomeStaticRepo.bottomNav.length,
+                    (ind) => GestureDetector(
+                          onTap: () {},
+                          child: Column(
+                            children: [
+                              Icon(
+                                ind == 0
+                                    ? HomeStaticRepo.bottomNav[ind].iconActivate
+                                    : HomeStaticRepo
+                                        .bottomNav[ind].iconInactive,
+                              ),
+                              5.verticalSpace,
+                              AppExoText(
+                                  text: HomeStaticRepo.bottomNav[ind].label,
+                                  fontWeight: ind == 0
+                                      ? FontWeight.w600
+                                      : FontWeight.w400,
+                                  fontSize: 12,
+                                  color: ind == 0
+                                      ? AppColors.redText
+                                      : AppColors.textGray1)
+                            ],
+                          ),
+                        ))),
+          )
+        ],
+      ),
+    );
+  }
+}
