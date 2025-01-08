@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
 class AppColors {
-  static const Color redBackground = Color(0xFFE71E25);
+  static const Color primaryColor = Color(0xFF8587cd);
   static const Color white = Colors.white;
   static const Color green = Color(0xFF24AE5F);
   static const Color black = Color(0xFF0A0D14);
@@ -21,6 +21,6 @@ class AppColors {
 
   static Color greyOrWhite(context) =>
       Theme.of(context).brightness == Brightness.light
-          ? textGray1.withValues(alpha:  0.5)
+          ? textGray1.withValues(alpha: 0.5)
           : Colors.white;
 }

@@ -55,7 +55,7 @@ class ToastMessage {
       borderRadius: BorderRadius.circular(10.r),
       messageSize: 16.sp,
       backgroundColor: switch (type) {
-        _ToastType.error => AppColors.redBackground,
+        _ToastType.error => AppColors.redText,
         _ToastType.warning => AppColors.yellow,
         _ToastType.success => AppColors.green,
       },

@@ -1,47 +1,11 @@
  
-import 'package:flutter/services.dart';
-import 'package:medical_app/global_widget/export.dart';
-
 extension StringExtension on String {
-  // String formatCurrency(value) {
-  //   var number =
-  //       value.toString().contains('.') ? value : double.tryParse(value ?? '0');
-  //   var format = NumberFormat.simpleCurrency(
-  //     locale: Platform.localeName,
-  //     decimalDigits: 0,
-  //     name: this,
-  //   );
-  //   return format.format(number);
-  // }
-
   String generateAsterisks() {
     return '*' * length;
   }
-
-  void copyToClipboard(String successMessage) {
-    Clipboard.setData(ClipboardData(
-      text: this,
-    )).then(
-      (value) {
-        ToastMessage.showSuccessToast(message: successMessage);
-      },
-    );
-  }
 }
 
-extension SvgExtension on String {
-  /// SVG with color
-  SvgPicture svg({Color? color, double? height, double? width, BoxFit? fit}) =>
-      SvgPicture.asset(
-        this,
-        fit: fit ?? BoxFit.scaleDown,
-        // ignore: deprecated_member_use
-        color: color,
-        height: height,
-        width: width,
-      );
-}
-
+ 
 /// For validation
 extension ValidatingExtensions on String {
   String? validateAnyField({String? field}) {
@@ -52,27 +16,21 @@ extension ValidatingExtensions on String {
     }
   }
 
-  String? validateName({String? field}) {
+  String? validateName() {
     if (toString().isEmpty) {
-      return '$field required';
+      return 'FullName required';
     } else if (toString().length < 3) {
-      return 'valid $field';
+      return 'Enter valid fullName';
     } else {
       return null;
     }
   }
 
-  String? validatePhoneNumber() {
-    if (isEmpty) {
-      return 'phone required';
-    }
-
-    final pattern = RegExp(r'^\+?[0-9]{8,}$');
-
-    if (!pattern.hasMatch(this)) {
-      return 'phone invalid';
-    } else if (length < 11) {
-      return 'phone _invalid';
+  String? validatePassword() {
+    if (toString().isEmpty) {
+      return 'Password required';
+    } else if (toString().length < 8) {
+      return 'Password must be at least 8 characters long';
     } else {
       return null;
     }
@@ -80,7 +38,7 @@ extension ValidatingExtensions on String {
 
   String? validateEmail() {
     if (toString().isEmpty) {
-      return 'email required';
+      return 'Email required';
     }
 
     final pattern = RegExp(

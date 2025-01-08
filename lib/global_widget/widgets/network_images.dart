@@ -1,4 +1,3 @@
-
 import 'package:medical_app/global_widget/export.dart';
 
 import '../../core/res/theme/assets.dart';
@@ -21,7 +20,7 @@ class AppNetwokImage extends StatelessWidget {
     return imageUrl == ''
         ? ClipRRect(
             borderRadius: BorderRadius.circular(radius ?? 0),
-            child: Image.asset(AppAssets.splashLogoForRedBg,
+            child: Image.asset(AppAssets.background,
                 width: width, height: height, fit: BoxFit.fill))
         : ClipRRect(
             borderRadius: BorderRadius.circular(radius ?? 0),
@@ -32,12 +31,12 @@ class AppNetwokImage extends StatelessWidget {
                 imageUrl: imageUrl,
                 placeholder: (context, url) => ClipRRect(
                     borderRadius: BorderRadius.circular(radius ?? 0),
-                    child: Image.asset(AppAssets.splashLogoForWhiteBg,
+                    child: Image.asset(AppAssets.background,
                         width: width, height: height, fit: fit)),
                 errorWidget: (context, url, error) => ClipRRect(
                     borderRadius: BorderRadius.circular(radius ?? 0),
-                    child: Image.asset(AppAssets.splashLogoForWhiteBg,
-                        width: width, height: height, fit: fit))),
+                    child: Image.asset(AppAssets.background,
+                        width: width, height: height, fit: fit)))
           );
   }
 }

@@ -1,3 +1,4 @@
+import 'package:medical_app/features/auth/presentation/bloc/cubit/auth_cubit.dart';
 import 'package:medical_app/global_widget/export.dart';
 
 class MainApp extends StatelessWidget {
@@ -7,7 +8,7 @@ class MainApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MultiBlocProvider(
       providers: [
-        // BlocProvider(create: (context) => OnboardCubit()),
+        BlocProvider(create: (context) => AuthCubit()),
       ],
       child: ScreenUtilInit(
           designSize: MediaQuery.sizeOf(context),

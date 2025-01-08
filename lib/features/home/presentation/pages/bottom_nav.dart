@@ -10,7 +10,11 @@ class BottomNav extends StatefulWidget {
 }
 
 class _BottomNavState extends State<BottomNav> {
-  final screens = [HomePage()];
+  final screens = [
+    HomePage(),
+    HomePage(),
+    HomePage(),
+  ];
   @override
   Widget build(BuildContext context) {
     final size = MediaQuery.sizeOf(context);
@@ -46,7 +50,7 @@ class _BottomNavState extends State<BottomNav> {
                                       : FontWeight.w400,
                                   fontSize: 12,
                                   color: ind == 0
-                                      ? AppColors.redText
+                                      ? AppColors.primaryColor
                                       : AppColors.textGray1)
                             ],
                           ),

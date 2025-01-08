@@ -1,14 +1,7 @@
 enum RouteName {
-  splash('/'),
-  onboarding('/onboarding'),
-  login('/login'),
-  loginWithEmail('/login_with_email'),
-  loginOtp('/login_otp'),
-  confirmInfo('/confirm_info'),
-  setupAccountInfo('/setup_account'),
+  login('/'),
   botomNav('/bottom_nav'),
-  
-  createSpace('/create_space');
+  doctoctDetail('/doctor_detail');
 
   final String path;
 

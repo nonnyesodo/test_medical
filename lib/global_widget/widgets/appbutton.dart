@@ -1,4 +1,3 @@
- 
 import '../export.dart';
 
 class Appbutton extends StatelessWidget {
@@ -37,12 +36,12 @@ class Appbutton extends StatelessWidget {
         borderColor: borderColor ?? Colors.transparent,
         height: height ?? size.height * 0.055,
         radius: size.width * 0.02,
-        color: buttonColor ?? AppColors.redBackground,
+        color: buttonColor ?? AppColors.primaryColor,
         child: isLoading
             ? LoadingAnimationWidget.flickr(
                 rightDotColor: AppColors.yellow,
                 leftDotColor: Colors.blueAccent,
-                size: 26.sp)
+                size: 30.sp)
             : child ??
                 AppExoText(
                     text: label ?? '',
