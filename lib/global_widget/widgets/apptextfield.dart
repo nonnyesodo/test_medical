@@ -13,7 +13,9 @@ class ApptextField extends StatelessWidget {
       this.onChange,
       this.onTap,
       this.readOnly = false,
+      this.obscureText = false,
       this.keyboardType,
+      this.sufixOntap,
       this.titleColor,
       this.suffix,
       this.hintTextColor});
@@ -23,8 +25,9 @@ class ApptextField extends StatelessWidget {
   final TextEditingController? controller;
   final String? Function(String?)? validator;
   final Function(String?)? onChange;
-  final Function()? onTap;
-  final bool readOnly;
+  final Function()? onTap, sufixOntap;
+
+  final bool readOnly, obscureText;
   final TextInputType? keyboardType;
   final Color? titleColor, hintTextColor;
   final Widget? suffix;
@@ -40,9 +43,10 @@ class ApptextField extends StatelessWidget {
             style: GoogleFonts.exo(),
             textCapitalization: TextCapitalization.sentences,
             readOnly: readOnly,
+            obscureText: obscureText,
             validator: validator,
             autovalidateMode: AutovalidateMode.onUserInteraction,
-            maxLines: malxLine,
+            maxLines: malxLine ?? 1,
             controller: controller,
             onChanged: onChange,
             keyboardType: keyboardType,
@@ -74,8 +78,8 @@ class ApptextField extends StatelessWidget {
                 focusedErrorBorder: OutlineInputBorder(borderRadius: BorderRadius.circular(10.sp), borderSide: BorderSide(color: AppColors.redText)),
                 hintText: hintText ?? '',
                 hintStyle: GoogleFonts.exo(fontSize: 12.sp, fontWeight: FontWeight.w400, color: hintTextColor ?? AppColors.textGray1),
-                suffixIcon: sufixIcon == null ? null : Icon(sufixIcon, color: AppColors.blackOrWhite(context), size: 20.sp),
-                prefixIcon: prefixIcon == null ? null : Icon(prefixIcon, color: AppColors.blackOrWhite(context), size: 20.sp))),
+                suffixIcon: sufixIcon == null ? null : GestureDetector(onTap: sufixOntap, child: Icon(sufixIcon, color: AppColors.blackOrWhite(context), size: 20.sp)),
+                prefixIcon: prefixIcon == null ? null : GestureDetector(child: Icon(prefixIcon, color: AppColors.blackOrWhite(context), size: 20.sp)))),
       ],
     );
   }

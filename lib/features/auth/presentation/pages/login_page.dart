@@ -4,9 +4,15 @@ import 'package:medical_app/core/utils/extension.dart';
 import 'package:medical_app/features/auth/presentation/bloc/cubit/auth_cubit.dart';
 import 'package:medical_app/global_widget/export.dart';
 
-class LoginPage extends StatelessWidget {
-  LoginPage({super.key});
+class LoginPage extends StatefulWidget {
+  const LoginPage({super.key});
 
+  @override
+  State<LoginPage> createState() => _LoginPageState();
+}
+
+class _LoginPageState extends State<LoginPage> {
+  bool hidePassword = true;
   final formKey = GlobalKey<FormState>();
 
   @override
@@ -73,8 +79,17 @@ class LoginPage extends StatelessWidget {
                             20.verticalSpace,
                             ApptextField(
                                 title: 'Password',
+                                obscureText: hidePassword,
+                                sufixOntap: () {
+                                  setState(() {
+                                    hidePassword = !hidePassword;
+                                  });
+                                },
                                 controller: watchAuth.passwordController,
                                 keyboardType: TextInputType.name,
+                                sufixIcon: hidePassword
+                                    ? Icons.visibility
+                                    : Icons.visibility_off,
                                 validator: (v) => v?.validatePassword()),
                             20.verticalSpace,
                             Appbutton(
